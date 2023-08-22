@@ -1,3 +1,13 @@
+# msi-gsi-sso-react-spa.js 
+# Too simple sample, only for learning
+
+
+* Support Google GSI SSO
+* Support Microsoft MSI SSO
+
+
+
+
 # React single-page application built with MSAL React and Microsoft identity platform
 
 This sample demonstrates how to use [MSAL React](https://www.npmjs.com/package/@azure/msal-react) to login, logout, conditionally render components to authenticated users, and acquire an access token for a protected resource such as Microsoft Graph.
