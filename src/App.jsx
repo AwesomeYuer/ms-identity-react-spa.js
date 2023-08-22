@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/msal-react";
 import { loginRequest } from "./authConfig";
 import { PageLayout } from "./components/PageLayout";
@@ -6,6 +6,7 @@ import { ProfileData } from "./components/ProfileData";
 import { callMsGraph } from "./graph";
 import Button from "react-bootstrap/Button";
 import "./styles/App.css";
+import { useIsAuthenticated } from '@azure/msal-react';
 
 /**
  * Renders information about the signed-in user or a button to retrieve data about the user
@@ -13,6 +14,20 @@ import "./styles/App.css";
 const ProfileContent = () => {
     const { instance, accounts } = useMsal();
     const [graphData, setGraphData] = useState(null);
+    const [userName, setUserName] = useState('');
+ 
+    const isAuthenticated = useIsAuthenticated();
+    
+    useEffect(() => {
+        if (isAuthenticated) {
+           // go to an authenticated-only place
+           setUserName(accounts[0].username);
+           console.log("User is authenticated");
+        } else {
+          // go back to the public landing page where the user can try to login again
+        }
+     }, [isAuthenticated]);
+
 
     function RequestProfileData() {
         // Silently acquires an access token which is then attached to a request for MS Graph data
@@ -26,7 +41,7 @@ const ProfileContent = () => {
 
     return (
         <>
-            <h5 className="card-title">Welcome {accounts[0].username}</h5>
+            <h5 className="card-title">Welcome { userName }</h5>
             {graphData ? 
                 <ProfileData graphData={graphData} />
                 :
