@@ -22,9 +22,9 @@ export const SignOutButton = () => {
         }
     }
     return (
-        <DropdownButton variant="secondary" className="ml-auto" drop="left" title="Sign Out">
-            <Dropdown.Item as="button" onClick={() => handleLogout("popup")}>Sign out using Popup</Dropdown.Item>
-            <Dropdown.Item as="button" onClick={() => handleLogout("redirect")}>Sign out using Redirect</Dropdown.Item>
+        <DropdownButton variant="secondary" className="ml-auto" drop="left" title="Microsoft Sign Out">
+            <Dropdown.Item as="button" onClick={() => handleLogout("popup")}>Microsoft Sign out using Popup</Dropdown.Item>
+            <Dropdown.Item as="button" onClick={() => handleLogout("redirect")}>Microsoft Sign out using Redirect</Dropdown.Item>
         </DropdownButton>
     )
 }
